@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://shimmering-crumble-b2abe8.netlify.app/sitemap.xml
