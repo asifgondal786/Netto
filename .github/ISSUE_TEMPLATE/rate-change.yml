@@ -1,0 +1,14 @@
+name: Rate change
+about: Report a pricing update or gateway rate change
+title: ""
+labels: ["rates"]
+body:
+  - type: textarea
+    attributes:
+      label: Gateway and pricing details
+      description: Include the provider name, rate, and source link.
+      placeholder: Stripe, 2.9% + $0.30, source URL here
+  - type: textarea
+    attributes:
+      label: Why the change is needed
+      placeholder: Explain the business or pricing update.

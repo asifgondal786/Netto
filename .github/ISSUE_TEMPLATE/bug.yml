@@ -1,0 +1,17 @@
+name: Bug report
+about: Report a problem with the calculator or CLI
+title: ""
+labels: ["bug"]
+body:
+  - type: input
+    attributes:
+      label: Summary
+      placeholder: Short description of the issue
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      placeholder: Describe how to trigger the bug.
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      placeholder: What should happen instead?

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Payment Fee Calculator for Stripe, PayPal, Etsy &amp; More | Netto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Estimate payment processing fees and net payouts for Stripe, PayPal, Etsy, Square, Shopify, eBay and Gumroad. Compare gateways or calculate the price needed to reach your target."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#E8EDF2" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Payment Fee Calculator for Stripe, PayPal, Etsy &amp; More | Netto" />
+    <meta property="og:description" content="Estimate payment processing fees, compare gateways, and find the sale price that reaches your target net." />
+    <meta property="og:site_name" content="Netto" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Netto Payment Fee Calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "description": "A free payment fee calculator for estimating net payouts, comparing payment gateways, and calculating a charge for a target net amount.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I calculate my net payout after payment fees?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Enter the sale amount and select a payment gateway. Netto estimates the percentage and fixed fees, then shows the remaining payout. Add applicable international or currency-conversion charges when relevant." }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I price a product to receive a target amount?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Choose Reverse mode and enter the amount you want to keep. The calculator solves for a sale price that covers the selected gateway's modeled fees and leaves that target net." }
+          },
+          {
+            "@type": "Question",
+            "name": "Are the payment processor fees exact and up to date?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Netto's built-in rates are estimates for comparison, not live quotes. Provider fees can change and depend on location, account, product, plan, card type, and transaction details. Confirm the current fee with your provider before making pricing or financial decisions." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is there a fixed fee as well as a percentage?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Many payment providers charge both a proportion of the transaction and a fixed amount per successful payment. The fixed portion has a larger impact on smaller orders, which is why comparing only percentage rates can be misleading." }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="#">Netto <small>payment fee calculators</small></a>
+        <button class="theme" type="button">dark</button>
+      </header>
+
+      <nav class="tabs" id="tabs" aria-label="Payment fee calculators">
+        <a href="?route=stripe" aria-current="page">Stripe</a>
+        <a href="?route=paypal">PayPal</a>
+        <a href="?route=etsy">Etsy</a>
+        <a href="?route=compare">Compare gateways</a>
+      </nav>
+
+      <main>
+      <section class="hero">
+        <h1>See what you actually keep.</h1>
+        <p>Compare Stripe, PayPal, Etsy and other payment fees, or work backwards to the price that nets you what you need.</p>
+      </section>
+
+      <div class="grid">
+        <aside class="panel stick" aria-label="Calculator inputs">
+          <div class="seg" aria-label="Calculation mode">
+            <label>
+              <input type="radio" name="mode" value="forward" checked />
+              <span>Forward</span>
+            </label>
+            <label>
+              <input type="radio" name="mode" value="reverse" />
+              <span>Reverse</span>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Sale price</span>
+            <div class="inp">
+              <b>$</b>
+              <input id="amountInput" type="number" min="0" step="0.01" value="100" />
+            </div>
+          </label>
+
+          <div class="two">
+            <label class="field">
+              <span>Cost of goods</span>
+              <div class="inp">
+                <b>$</b>
+                <input id="cogsInput" type="number" min="0" step="0.01" value="0" />
+              </div>
+            </label>
+
+            <label class="field">
+              <span>Orders / month</span>
+              <div class="inp">
+                <b>#</b>
+                <input id="ordersInput" type="number" min="0" step="1" value="100" />
+              </div>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Gateway</span>
+            <select id="gatewaySelect" class="sel"></select>
+          </label>
+
+          <div class="two">
+            <label class="field">
+              <span>Your percent fee</span>
+              <div class="inp">
+                <input id="percentInput" type="number" min="0" max="100" step="0.01" value="2.9" />
+                <b>%</b>
+              </div>
+            </label>
+
+            <label class="field">
+              <span>Your flat fee</span>
+              <div class="inp">
+                <b>$</b>
+                <input id="flatInput" type="number" min="0" step="0.01" value="0.3" />
+              </div>
+            </label>
+          </div>
+
+          <label class="chk">
+            <input id="intlInput" type="checkbox" />
+            <span>International card (adds 1.5%)</span>
+          </label>
+
+          <label class="chk">
+            <input id="convInput" type="checkbox" />
+            <span>Currency conversion (adds 1%)</span>
+          </label>
+
+          <div id="customPanel" class="hide">
+            <p class="hint">Custom gateway settings</p>
+          </div>
+        </aside>
+
+        <section class="panel" aria-label="Fee calculation result">
+          <div id="out" aria-live="polite"></div>
+        </section>
+      </div>
+
+      <h2 id="ledgerH">Compare payment processing fees</h2>
+      <p class="hint" id="ledgerHint"></p>
+      <div class="ledger" id="ledger"></div>
+
+      <section class="seo-copy" aria-labelledby="gateway-guide-title">
+        <h2 id="gateway-guide-title">Choose a payment fee calculator</h2>
+        <p>Payment processing costs are more than a percentage. A typical transaction can include a percentage of the sale, a fixed per-order charge, and extra charges for some card types or currencies. Netto shows the estimated fee and payout together so you can compare the effect on a real sale amount.</p>
+        <div class="guide-grid">
+          <article id="stripe-fees">
+            <h3>Stripe fee calculator</h3>
+            <p>Estimate a Stripe card-processing fee from the sale amount, percentage rate, and fixed charge. Use the international-card and currency-conversion options when they apply to your transaction.</p>
+            <a href="stripe-fee-calculator.html">Stripe fee guide and calculator</a>
+          </article>
+          <article id="paypal-fees">
+            <h3>PayPal fee calculator</h3>
+            <p>Estimate the difference between a customer's payment and your PayPal payout. Your actual rate can depend on the product, transaction type, country, and account agreement.</p>
+            <a href="paypal-fee-calculator.html">PayPal fee guide and calculator</a>
+          </article>
+          <article id="etsy-fees">
+            <h3>Etsy fee calculator</h3>
+            <p>Review an illustrative Etsy transaction estimate with transaction, payment-processing, and listing fee components. Marketplace fees and payment rates can vary by location and optional services.</p>
+            <a href="etsy-fee-calculator.html">Etsy fee guide and calculator</a>
+          </article>
+          <article>
+            <h3>Square and Shopify Payments</h3>
+            <p>Compare estimated online-payment costs with other gateways. The rate available to you may vary by plan, country, payment method, and whether you use the provider's own checkout.</p>
+          </article>
+          <article>
+            <h3>eBay and Gumroad</h3>
+            <p>Marketplace and creator platforms can combine transaction, service, and payment fees. Use the estimate as a comparison starting point, then check your account's current fee schedule.</p>
+          </article>
+          <article>
+            <h3>Custom payment fee</h3>
+            <p>Enter your own percentage and fixed transaction fee to estimate a processor, marketplace, or negotiated plan that is not listed.</p>
+          </article>
+        </div>
+
+        <h2>How the payment fee calculator works</h2>
+        <p>In forward mode, Netto subtracts the estimated percentage and fixed fees from your sale price. In reverse mode, it solves for the charge that leaves your chosen target after those fees. Add cost of goods to see it alongside the payout, and set monthly orders to understand the transaction context.</p>
+        <p><strong>Estimated fee = sale price × percentage rate + fixed per-order fees.</strong> Some providers apply additional or tiered fees, taxes, marketplace charges, or plan-specific pricing that this simple estimate may not include.</p>
+
+        <h2>Payment fee calculator questions</h2>
+        <div class="faq-list">
+          <details>
+            <summary>How do I calculate my net payout after payment fees?</summary>
+            <p>Enter the sale amount and select a payment gateway. Netto estimates the percentage and fixed fees, then shows the remaining payout. Add applicable international or currency-conversion charges when relevant.</p>
+          </details>
+          <details>
+            <summary>How can I price a product to receive a target amount?</summary>
+            <p>Choose Reverse mode and enter the amount you want to keep. The calculator solves for a sale price that covers the selected gateway's modeled fees and leaves that target net.</p>
+          </details>
+          <details>
+            <summary>Are the payment processor fees exact and up to date?</summary>
+            <p>No. Netto's built-in rates are estimates for comparison, not live quotes. Provider fees can change and depend on location, account, product, plan, card type, and transaction details. Confirm the current fee with your provider before making pricing or financial decisions.</p>
+          </details>
+          <details>
+            <summary>Why is there a fixed fee as well as a percentage?</summary>
+            <p>Many payment providers charge both a proportion of the transaction and a fixed amount per successful payment. The fixed portion has a larger impact on smaller orders, which is why comparing only percentage rates can be misleading.</p>
+          </details>
+        </div>
+      </section>
+      </main>
+
+      <footer>
+        Rates are approximate US-dollar list prices and are not live-verified. Processors change plans, regions and categories, so confirm against the provider's pricing page before you rely on a number. All rates live in one table in this file (GATEWAYS).
+      </footer>
+    </div>
+
+    <script type="module" src="assets/js/app.js"></script>
+  </body>
+</html>
