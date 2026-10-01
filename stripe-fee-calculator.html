@@ -13,7 +13,22 @@
     <meta property="og:site_name" content="Netto" />
     <link rel="canonical" href="https://shimmering-crumble-b2abe8.netlify.app/stripe-fee-calculator.html" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <script defer data-domain="shimmering-crumble-b2abe8.netlify.app" src="https://plausible.io/js/script.manual.js"></script>
+    <script defer src="assets/js/analytics.js"></script>
     <script src="assets/js/theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is this an official Stripe calculator?", "acceptedAnswer": { "@type": "Answer", "text": "No. Netto is an independent estimation tool. It does not access your Stripe account or provide an official quote." } },
+          { "@type": "Question", "name": "Why does my Stripe payout differ from the estimate?", "acceptedAnswer": { "@type": "Answer", "text": "Your account's location and pricing, card type, currency, refunds, disputes, taxes, and other adjustments can affect settlement. Review the transaction details in your Stripe dashboard." } },
+          { "@type": "Question", "name": "Are Stripe fees live-verified here?", "acceptedAnswer": { "@type": "Answer", "text": "No. Rates are editable estimates for comparison and may not match your current contract. Confirm applicable fees on Stripe's pricing page and in your account." } }
+        ]
+      }
+    </script>
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
@@ -46,9 +61,9 @@
             <details><summary>Are Stripe fees live-verified here?</summary><p>No. Rates are editable estimates for comparison and may not match your current contract. Confirm applicable fees on Stripe's pricing page and in your account.</p></details>
           </div>
         </article>
-        <p class="related">Compare another processor: <a href="paypal-fee-calculator.html">PayPal</a> · <a href="etsy-fee-calculator.html">Etsy</a> · <a href="index.html">all payment fee calculators</a>.</p>
+        <p class="related">Compare another processor: <a href="paypal-fee-calculator.html">PayPal</a> · <a href="stripe-vs-paypal-fees.html">Stripe vs PayPal</a> · <a href="index.html">all payment fee calculators</a>.</p>
       </main>
-      <footer>Netto provides estimates for planning, not financial advice. Verify current rates with Stripe before making decisions.</footer>
+      <footer>Netto provides estimates for planning, not financial advice. Verify current rates with Stripe before making decisions. <a href="privacy.html">Privacy</a></footer>
     </div>
   </body>
 </html>

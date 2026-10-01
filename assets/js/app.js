@@ -30,6 +30,9 @@ const els = {
   out: document.querySelector('#out'),
   ledger: document.querySelector('#ledger'),
   ledgerHint: document.querySelector('#ledgerHint'),
+  copyShare: document.querySelector('#copyShare'),
+  shareUrl: document.querySelector('#shareUrl'),
+  copyStatus: document.querySelector('#copyStatus')
 };
 
 const money = (n) => {
@@ -39,6 +42,10 @@ const money = (n) => {
 };
 
 const fp = (n) => Number(n.toFixed(2));
+
+function track(name, props = {}) {
+  window.nettoTrack?.(name, props);
+}
 
 function parts(g) {
   const ps = g.id === 'custom'
@@ -177,6 +184,7 @@ function renderCustom() {
 function updateUrl() {
   const params = new URLSearchParams();
   params.set('route', S.route);
+  params.set('mode', S.mode);
   params.set('gateway', els.gatewaySelect.value);
   params.set('amount', String(els.amountInput.value || 100));
   params.set('cogs', String(els.cogsInput.value || 0));
@@ -190,6 +198,7 @@ function updateUrl() {
     params.set('b', S.b);
   }
   window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+  els.shareUrl.value = window.location.href;
 }
 
 function syncFromUrl() {
@@ -235,6 +244,7 @@ function render() {
 function bind() {
   els.gatewaySelect.addEventListener('change', (event) => {
     S.route = event.target.value;
+    track('Gateway Selected', { gateway: S.route });
     render();
   });
 
@@ -276,8 +286,34 @@ function bind() {
   document.querySelectorAll('input[name="mode"]').forEach((input) => {
     input.addEventListener('change', () => {
       S.mode = input.value;
+      track('Calculation Mode Changed', { mode: S.mode });
       render();
     });
+  });
+
+  [
+    [els.amountInput, 'sale_price'],
+    [els.cogsInput, 'cost_of_goods'],
+    [els.ordersInput, 'orders_per_month'],
+    [els.percentInput, 'custom_percent_fee'],
+    [els.flatInput, 'custom_flat_fee']
+  ].forEach(([input, field]) => {
+    input.addEventListener('change', () => track('Calculator Input Changed', { field }));
+  });
+
+  els.intlInput.addEventListener('change', () => track('Fee Option Changed', { option: 'international_card' }));
+  els.convInput.addEventListener('change', () => track('Fee Option Changed', { option: 'currency_conversion' }));
+
+  els.copyShare.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(els.shareUrl.value);
+      els.copyStatus.textContent = 'Share link copied.';
+      track('Copy Share Link');
+    } catch {
+      els.shareUrl.focus();
+      els.shareUrl.select();
+      els.copyStatus.textContent = 'Copy the selected link.';
+    }
   });
 }
 

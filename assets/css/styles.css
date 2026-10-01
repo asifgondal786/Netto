@@ -93,6 +93,11 @@ h1{font-size:clamp(2.1rem,6.2vw,3.7rem);line-height:1.02;letter-spacing:-.035em;
 @media (max-width:680px){.pair{grid-template-columns:minmax(0,1fr)}}
 .verdict{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:18px;font-weight:600}
 .verdict small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
+.share-actions{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:center;margin-top:16px}
+.share-button{border:1px solid var(--line);border-radius:8px;background:var(--accent);color:var(--accent-ink);padding:9px 12px;font:700 .88rem var(--display);cursor:pointer}
+.share-button:hover{filter:brightness(.94)}
+.share-url{width:100%;min-width:0;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--muted);padding:9px 10px;font:400 .78rem var(--mono);text-overflow:ellipsis}
+.copy-status{grid-column:1/-1;min-height:1.2em;color:var(--muted);font-size:.82rem}
 
 .slot{border:1.5px dashed var(--line);border-radius:12px;padding:14px;color:var(--muted);font-size:.88rem;margin-top:6px}
 
@@ -130,6 +135,7 @@ details{border-bottom:1px solid var(--line);padding:12px 2px}summary{font-weight
 .cta:hover{filter:brightness(.92)}
 .related{margin-top:30px;font-size:.92rem}
 @media (max-width:600px){.guide-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.share-actions{grid-template-columns:minmax(0,1fr)}.share-button{width:100%}}
 @media (prefers-reduced-motion:reduce){.theme{transition:none}}
 footer{margin-top:44px;color:var(--muted);font-size:.85rem;max-width:72ch}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

@@ -20,6 +20,10 @@
     <link rel="canonical" href="https://shimmering-crumble-b2abe8.netlify.app/" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
     <script src="assets/js/theme.js"></script>
+    <script defer data-domain="shimmering-crumble-b2abe8.netlify.app" src="https://plausible.io/js/script.manual.js"></script>
+    <script defer src="assets/js/analytics.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script type="application/ld+json">
@@ -161,6 +165,11 @@
 
         <section class="panel" aria-label="Fee calculation result">
           <div id="out" aria-live="polite"></div>
+          <div class="share-actions">
+            <button id="copyShare" class="share-button" type="button">Copy share link</button>
+            <input id="shareUrl" class="share-url" type="url" readonly aria-label="Shareable calculator URL" />
+            <span id="copyStatus" class="copy-status" role="status" aria-live="polite"></span>
+          </div>
         </section>
       </div>
 
@@ -199,6 +208,31 @@
             <h3>Custom payment fee</h3>
             <p>Enter your own percentage and fixed transaction fee to estimate a processor, marketplace, or negotiated plan that is not listed.</p>
           </article>
+          <article>
+            <h3>Shopify fee calculator</h3>
+            <p>Estimate an online card-processing payout using the Shopify Payments comparison model. Plan charges and non-processing fees are not included.</p>
+            <a href="shopify-fee-calculator.html">Shopify fee guide and calculator</a>
+          </article>
+          <article>
+            <h3>Upwork fee estimator</h3>
+            <p>Enter the service fee and any fixed charge shown for your contract to estimate a freelancer payout. Upwork terms can depend on contract details.</p>
+            <a href="upwork-fee-calculator.html">Upwork fee guide and estimator</a>
+          </article>
+          <article>
+            <h3>Wise fee estimator</h3>
+            <p>Use a quoted percentage and fixed transfer charge to estimate a Wise transfer. Actual costs depend on currencies, route, amount, and payment method.</p>
+            <a href="wise-fee-calculator.html">Wise fee guide and estimator</a>
+          </article>
+          <article>
+            <h3>Stripe vs PayPal fees</h3>
+            <p>Compare modeled transaction costs side by side for the same customer payment or target payout.</p>
+            <a href="stripe-vs-paypal-fees.html">Compare Stripe and PayPal</a>
+          </article>
+          <article>
+            <h3>Etsy vs Shopify fees</h3>
+            <p>Compare an illustrative marketplace fee breakdown with a Shopify Payments processing estimate.</p>
+            <a href="etsy-vs-shopify-fees.html">Compare Etsy and Shopify</a>
+          </article>
         </div>
 
         <h2>How the payment fee calculator works</h2>
@@ -229,6 +263,7 @@
 
       <footer>
         Rates are approximate US-dollar list prices and are not live-verified. Processors change plans, regions and categories, so confirm against the provider's pricing page before you rely on a number. All rates live in one table in this file (GATEWAYS).
+        <a href="privacy.html">Privacy</a>
       </footer>
     </div>
 
