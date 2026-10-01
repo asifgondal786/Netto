@@ -13,14 +13,15 @@ The site includes crawlable HTML for the home page, processor/freelancer/transfe
 
 ## Audit results
 
-- Google's Rich Results Test detected one valid Software Apps item on the home page. Its only issue is the optional `aggregateRating`; Netto does not publish ratings or reviews, so none are fabricated. FAQ and breadcrumb data are present on guides, but Google reports no eligible FAQ rich result for them.
-- PageSpeed Insights reported a 90 mobile performance score, LCP 2.9 s, TBT 0 ms, and CLS 0 on the earlier version. No field data was available. Repeat the test after the new preconnects, analytics script, and expanded homepage deploy.
-- A `site:` search returned no results at the time of testing. Newly submitted pages may need time before they appear in search.
+- Google's Rich Results Test detected one valid Software Apps item on the home page. Its only issue is the optional `aggregateRating`; Netto does not publish ratings or reviews, so none are fabricated. A Stripe guide test detected one valid Breadcrumb item. FAQ JSON-LD parses, but Google reports no eligible FAQ rich result for these pages.
+- The latest PageSpeed Insights run scored 90 mobile, with LCP 2.9 s, TBT 0 ms, and CLS 0. Field data is unavailable. The overall target is met, but lab LCP remains above the 2.5 s good threshold.
+- Google Search Console reports the ten-URL sitemap as successful with ten discovered pages. The current `site:` query still returns no results; wait for indexing and recheck later.
+- Bing Webmaster Tools still shows four discovered URLs from its GSC import. Its sitemap status is successful with no errors or warnings; allow time for the imported count to refresh.
 
 ## Ongoing maintenance
 
 1. Add `shimmering-crumble-b2abe8.netlify.app` to the Plausible account to view analytics. Without that account setup, the public script cannot populate a dashboard.
-2. Monitor Bing's imported sitemap until its discovered-URL count reflects the expanded sitemap; Google Search Console currently reports ten.
+2. Recheck Bing's imported sitemap count and the Google `site:` query after their next processing interval.
 3. Publish appropriate directory listings and community posts using the owner-reviewed copy in `distribution-kit.md`. These require owner accounts and should be shared only where relevant.
 4. Review provider pricing sources before changing the calculator's static fee estimates.
 5. Dynamic PNG Open Graph generation remains separate: it needs a server-side image endpoint, which is outside the current no-build static setup.
