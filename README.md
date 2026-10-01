@@ -13,6 +13,7 @@ Netto is a zero-dependency payment fee calculator for sellers. It shows how much
 - Light and dark themes with system preference and saved choice
 - Search guides for Stripe, PayPal, Etsy, Shopify, Upwork, and Wise
 - Stripe-vs-PayPal and Etsy-vs-Shopify comparisons
+- Static 1200x630 Open Graph and Twitter social preview
 - Privacy-minimized Plausible pageviews and calculator interaction events
 - CLI and rate canary support
 

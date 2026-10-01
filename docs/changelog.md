@@ -5,6 +5,7 @@
 - Added matching FAQ structured data, canonical metadata, and sitemap routes.
 - Added a copy-share-link control and privacy-minimized Plausible events.
 - Added persisted light/dark theme controls across the calculator and guides.
+- Added a static 1200x630 social card and preloaded the display font with `font-display: swap`.
 
 ## 1.0.0
 - Initial release of Netto.
