@@ -21,7 +21,16 @@
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
     <script defer data-domain="shimmering-crumble-b2abe8.netlify.app" src="https://plausible.io/js/script.manual.js"></script>
     <script defer src="assets/js/analytics.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script>
+      var themePreference = null;
+      try { themePreference = localStorage.getItem('netto-theme'); } catch {}
+      if (themePreference === 'dark' || themePreference === 'light') {
+        document.documentElement.dataset.theme = themePreference;
+      } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
+    <script defer src="assets/js/theme.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script type="application/ld+json">

@@ -10,10 +10,20 @@
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
     <script defer data-domain="shimmering-crumble-b2abe8.netlify.app" src="https://plausible.io/js/script.manual.js"></script>
     <script defer src="assets/js/analytics.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script>
+      var themePreference = null;
+      try { themePreference = localStorage.getItem('netto-theme'); } catch {}
+      if (themePreference === 'dark' || themePreference === 'light') {
+        document.documentElement.dataset.theme = themePreference;
+      } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
+    <script defer src="assets/js/theme.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" /></noscript>
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
