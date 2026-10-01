@@ -5,6 +5,8 @@ The site includes crawlable HTML for the home page, processor/freelancer/transfe
 ## Implemented
 
 - Absolute canonical and Open Graph URLs use the Netlify production hostname.
+- The shared 1200x630 PNG fallback is at `assets/img/og-default.png` and is referenced by Open Graph and Twitter metadata on all ten sitemap pages.
+- Bricolage Grotesque uses `font-display: swap` with a preloaded Latin WOFF2; IBM Plex Mono CSS is loaded asynchronously.
 - `sitemap.xml` lists the home page, processor and comparison guides, plus the privacy page; `robots.txt` allows crawling and points to the sitemap.
 - Netlify publishes the repository root and runs the test suite before deploys.
 - Google Search Console ownership is verified using the homepage HTML tag. The expanded ten-URL sitemap was resubmitted and reports `Success` with ten discovered URLs.
@@ -21,9 +23,9 @@ The site includes crawlable HTML for the home page, processor/freelancer/transfe
 ## Ongoing maintenance
 
 1. Add `shimmering-crumble-b2abe8.netlify.app` to the Plausible account to view analytics. Without that account setup, the public script cannot populate a dashboard.
-2. Recheck Bing's imported sitemap count and the Google `site:` query after their next processing interval.
+2. Recheck Bing's imported sitemap count after its next processing interval. If Google still shows no pages after 5-7 days, inspect `/`, `/stripe-fee-calculator.html`, and `/paypal-fee-calculator.html` in Search Console and request indexing.
 3. Publish appropriate directory listings and community posts using the owner-reviewed copy in `distribution-kit.md`. These require owner accounts and should be shared only where relevant.
 4. Review provider pricing sources before changing the calculator's static fee estimates.
-5. Dynamic PNG Open Graph generation remains separate: it needs a server-side image endpoint, which is outside the current no-build static setup.
+5. Dynamic, per-result Open Graph images remain separate: the deployed fallback is static; generating result-specific PNGs needs a server-side image endpoint.
 
 Keep fee descriptions accurate and review source rates against provider pricing pages before publishing rate-specific claims. The current calculator values are estimates, not live-verified quotes.
