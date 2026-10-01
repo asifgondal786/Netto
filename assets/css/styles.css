@@ -16,7 +16,22 @@
   --paper-pos:#0B7A4F;
   --display:'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme:light;
   box-sizing:border-box;
+}
+
+:root[data-theme="dark"]{
+  --bg:#101820;
+  --ink:#EDF2F7;
+  --muted:#ABB8C5;
+  --card:#1B2732;
+  --line:#3A4A58;
+  --accent:#9CACEF;
+  --accent-ink:#121A2B;
+  --good:#73D6A1;
+  --bad:#FF8291;
+  --bar:#53697A;
+  color-scheme:dark;
 }
 
 *{box-sizing:inherit}
@@ -29,7 +44,8 @@ a{color:inherit}
 header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0 18px}
 .brand{font-weight:800;font-size:1.6rem;letter-spacing:-.03em;text-decoration:none}
 .brand small{font-weight:500;font-size:.85rem;color:var(--muted);letter-spacing:0;margin-left:10px}
-.theme{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font:600 .85rem var(--display);cursor:pointer}
+.theme{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font:600 .85rem var(--display);cursor:pointer;transition:background-color .18s ease,border-color .18s ease,color .18s ease}
+.theme:hover{border-color:var(--accent);background:var(--bg)}
 
 nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 14px;margin:0 -18px;padding-left:18px;padding-right:18px;scrollbar-width:thin}
 nav.tabs a{white-space:nowrap;text-decoration:none;font-weight:600;font-size:.92rem;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
@@ -114,5 +130,6 @@ details{border-bottom:1px solid var(--line);padding:12px 2px}summary{font-weight
 .cta:hover{filter:brightness(.92)}
 .related{margin-top:30px;font-size:.92rem}
 @media (max-width:600px){.guide-grid{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.theme{transition:none}}
 footer{margin-top:44px;color:var(--muted);font-size:.85rem;max-width:72ch}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

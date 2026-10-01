@@ -1,6 +1,6 @@
 # Netto
 
-Netto is a zero-dependency, single-page payment fee calculator for sellers. It shows how much remains after processor fees and calculates the charge needed to hit a target net amount.
+Netto is a zero-dependency payment fee calculator for sellers. It shows how much remains after processor fees and calculates the charge needed to hit a target net amount.
 
 ## Features
 
@@ -10,6 +10,8 @@ Netto is a zero-dependency, single-page payment fee calculator for sellers. It s
 - Compare two gateways side by side
 - Cross-gateway ledger for quick comparison
 - Shareable URL state
+- Light and dark themes with system preference and saved choice
+- Search-friendly Stripe, PayPal, and Etsy calculator guides
 - CLI and rate canary support
 
 ## Run locally
