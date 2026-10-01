@@ -305,10 +305,13 @@ function bind() {
   els.convInput.addEventListener('change', () => track('Fee Option Changed', { option: 'currency_conversion' }));
 
   els.copyShare.addEventListener('click', async () => {
+    track('Copy Share Link');
     try {
-      await navigator.clipboard.writeText(els.shareUrl.value);
+      await Promise.race([
+        navigator.clipboard.writeText(els.shareUrl.value),
+        new Promise((resolve, reject) => window.setTimeout(() => reject(new Error('Clipboard timed out')), 1500))
+      ]);
       els.copyStatus.textContent = 'Share link copied.';
-      track('Copy Share Link');
     } catch {
       els.shareUrl.focus();
       els.shareUrl.select();
